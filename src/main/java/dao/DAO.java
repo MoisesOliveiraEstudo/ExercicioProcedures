@@ -8,6 +8,6 @@ public interface DAO <E>{
 	public void inserir(E e) throws SQLException, ClassNotFoundException;
 	public void atualizar(E e) throws SQLException, ClassNotFoundException;
 	public void deletar(E e) throws SQLException, ClassNotFoundException;
-	public E consultar() throws SQLException, ClassNotFoundException;
+	public E consultar(E e) throws SQLException, ClassNotFoundException;
 	public List<E> consultarTodos() throws SQLException, ClassNotFoundException;
 }

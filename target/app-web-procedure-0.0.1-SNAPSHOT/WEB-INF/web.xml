@@ -9,4 +9,10 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ClienteController</display-name>
+    <servlet-name>ClienteController</servlet-name>
+    <servlet-class>controller.ClienteController</servlet-class>
+  </servlet>
 </web-app>

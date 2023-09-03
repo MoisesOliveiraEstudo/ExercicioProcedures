@@ -1,5 +1,5 @@
 CREATE DATABASE db_app_procedures
-GO
+GO   
 USE db_app_procedures
 GO
 CREATE TABLE cliente(
@@ -12,14 +12,34 @@ CREATE TABLE cliente(
 
 INSERT INTO cliente VALUES ('55555555555','Akinaldo', 'akin@email.com', 774.89, '2005-06-19')
 
-CREATE PROCEDURE procedure_insert(@cpf AS CHAR(11), @nome AS VARCHAR(100), @email AS VARCHAR(200), 
+CREATE PROCEDURE procd_cliente(@op AS CHAR(02), @cpf AS CHAR(11), @nome AS VARCHAR(100), @email AS VARCHAR(200), 
 @limite_credito AS DECIMAL(7,2), @dt_nascimento AS DATE)
 AS
-	IF(LEN(@cpf) = 11)
+	IF(@op = 'I')
 		BEGIN
-			INSERT INTO cliente VALUES (@cpf, @nome, @email, @limite_credito, @dt_nascimento)
+			IF(LEN(@cpf) = 11)
+			BEGIN
+				INSERT INTO cliente VALUES (@cpf, @nome, @email, @limite_credito, @dt_nascimento)
+			END
+		ELSE
+			BEGIN
+				THROW 51000, 'CPF nao valido', 1
+			END
 		END
-	ELSE
+	IF(@op = 'U')
 		BEGIN
-			THROW 51000, 'CPF nao valido',1
+			UPDATE cliente SET nome = @nome, email = @email, limite_de_credito = @limite_credito, 
+			dt_nascimento = @dt_nascimento
 		END
+
+	IF(@op = 'D')
+		BEGIN
+			DELETE FROM cliente WHERE cpf = @cpf
+		END
+	IF(@op = 'C')
+		BEGIN
+			SELECT * FROM cliente WHERE cpf = @cpf
+		END
+
+
+EXEC procedure_insert 'C', '55555555555', '', '', 0.00, ''

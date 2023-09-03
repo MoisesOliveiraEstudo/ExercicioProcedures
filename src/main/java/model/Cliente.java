@@ -11,6 +11,19 @@ public class Cliente {
 	private Date dataNascimento;
 	
 	
+	public Cliente(String cpf, String nome, String email, float limiteCredito, Date dataNasc) {
+		this.cpf = cpf;
+		this.nome = nome;
+		this.email = email;
+		this.limiteDeCredito = limiteCredito;
+		this.dataNascimento = dataNasc;
+	}
+	
+	public Cliente() {
+		
+	}
+	
+	
 	public String getCpf() {
 		return cpf;
 	}
@@ -41,6 +54,7 @@ public class Cliente {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+	
 	
 	
 }

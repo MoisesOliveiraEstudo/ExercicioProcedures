@@ -1,0 +1,5 @@
+controller\ClienteController.class
+dao\ClienteDAO.class
+database\Connector.class
+dao\DAO.class
+model\Cliente.class
